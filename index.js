@@ -7,6 +7,7 @@ crawler.maxDepth = 1;
 
 crawler.on("fetchcomplete", function (queueItem, responseBuffer, response) {
   var html = responseBuffer.toString('utf-8');
+  var p = html.replace(/[\r|\n|\t]/g, '');
 });
 
 crawler.start();
