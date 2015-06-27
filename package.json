@@ -1,0 +1,24 @@
+{
+  "name": "watch-score-crawler",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/reaperes/watch-score-crawler.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/reaperes/watch-score-crawler/issues"
+  },
+  "homepage": "https://github.com/reaperes/watch-score-crawler#readme",
+  "dependencies": {
+    "htmlparser2": "^3.8.3",
+    "simplecrawler": "^0.5.2"
+  }
+}
