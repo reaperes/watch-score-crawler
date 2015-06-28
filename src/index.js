@@ -4,8 +4,8 @@ var crawler = new Crawler('www.koreabaseball.com', '/Schedule/ScoreBoard/ScoreBo
 var cheerio = require('cheerio');
 var Sequelize = require('sequelize');
 var sequelize = new Sequelize('watch_score', 'root', '');
-var teamService = require('./domain/teamservice')(sequelize);
-var gameService = require('./domain/gameservice')(sequelize);
+var teamService = require('./domain/team/teamservice')(sequelize);
+var gameService = require('./domain/game/gameservice')(sequelize);
 
 crawler.maxConcurrency = 1;
 crawler.maxDepth = 1;
