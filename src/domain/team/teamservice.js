@@ -14,8 +14,18 @@ module.exports = function (sequelize) {
         where: {
           id: id
         }
-      }).then(function (teams) {
-          callback(teams[0]);
+      }).then(function (rows) {
+          callback(rows[0]);
+      });
+    },
+
+    findOneByName: function (name, callback) {
+      Team.findAll({
+        where: {
+          name: name
+        }
+      }).then(function (rows) {
+        callback(rows[0]);
       });
     }
   }
