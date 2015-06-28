@@ -5,6 +5,7 @@ var cheerio = require('cheerio');
 var Sequelize = require('sequelize');
 var sequelize = new Sequelize('watch_score', 'root', '');
 var teamService = require('./domain/teamservice')(sequelize);
+var gameService = require('./domain/gameservice')(sequelize);
 
 crawler.maxConcurrency = 1;
 crawler.maxDepth = 1;
@@ -37,7 +38,10 @@ crawler.on("complete",function() {
 
 //crawler.start();
 
-teamService.findAll(function (teams) {
-  console.log(teams);
-});
+//teamService.findAll(function (teams) {
+//  console.log(teams);
+//});
 
+gameService.findAll(function (games) {
+  console.log(games);
+});
