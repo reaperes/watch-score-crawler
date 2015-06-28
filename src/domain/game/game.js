@@ -10,13 +10,13 @@ module.exports = function (sequelize) {
     },
     home: {
       type: Sequelize.INTEGER,
-      references: 'team',
-      referencesKey: 'id'
+      model: 'team',
+      key: 'id'
     },
     away: {
       type: Sequelize.INTEGER,
-      references: 'team',
-      referencesKey: 'id'
+      model: 'team',
+      key: 'id'
     },
     state: {
       type: Sequelize.ENUM('BEFORE', 'PLAYING', 'END')

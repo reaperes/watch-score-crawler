@@ -1,3 +1,5 @@
+var moment = require('moment');
+
 module.exports = function (sequelize) {
   var Game = require('./game')(sequelize);
 
@@ -15,14 +17,14 @@ module.exports = function (sequelize) {
      * @param callback
      */
     findOneByDateAndTeam: function (date, team, callback) {
-      var startDate = new Date(date.getYear(), date.getMonth(), date.getDay(), 0, 0, 0, 0);
-      var endDate = new Date(startDate + 24 * 60 * 60 * 1000 - 1);
+      var startDate = moment(date).hours(0).minutes(0).seconds(0);
+      var endDate = moment(startDate).add(1, 'days');
 
       Game.findAll({
         where: {
           date: {
-            $lt: startDate,
-            $gt: endDate
+            $gt: startDate.format('YYYY-MM-DD HH:mm:ss'),
+            $lt: endDate.format('YYYY-MM-DD HH:mm:ss')
           },
           $or: [
             {home: team.id},
@@ -33,6 +35,12 @@ module.exports = function (sequelize) {
         callback(rows[0]);
       });
 
+    },
+
+    save: function (team) {
+      team.save().catch(function (err) {
+        throw err;
+      });
     }
   }
 };

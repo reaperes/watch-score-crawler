@@ -18,7 +18,27 @@ crawler.on("fetchcomplete", function (queueItem, responseBuffer, response) {
   teams.map(function (team, idx) {
     var name = $(team).children('strong').text();
     var state = $(team.parent).children('strong').text();     // 경기전, 1회초, 1회말, ... , 경기종료
-    console.log(name + ' - ' + state + '     ');              // terminal issue
+    switch(state) {
+      case '경기전':
+        state = 'BEFORE';
+        break;
+
+      case '경기종료':
+        state = 'END';
+        break;
+
+      default:
+        state = 'PLAYING';
+        break;
+    }
+
+    teamService.findOneByName(name, function (team) {
+      gameService.findOneByDateAndTeam(new Date(), team, function (game) {
+        game.state = state;
+        gameService.save(game);
+      });
+    });
+
   });
 });
 

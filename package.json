@@ -19,9 +19,14 @@
   "homepage": "https://github.com/reaperes/watch-score-crawler#readme",
   "dependencies": {
     "cheerio": "^0.19.0",
-    "mysql": "^2.7.0",
+    "moment": "latest",
+    "mysql": "latest",
     "q": "latest",
-    "sequelize": "^3.3.2",
+    "sequelize": "latest",
     "simplecrawler": "^0.5.2"
+  },
+  "devDependencies": {
+    "chai": "latest",
+    "mocha": "latest"
   }
 }
